@@ -15,7 +15,7 @@
         <% for(let i=0; i < items.length; i++) {%>
             <span><% items[i] %></span>
             <ul>
-                <li>
+                <li class="todoItem">
                     <%if(items[i].completed == true) {%>
                         <span class='completed'><%=items[i].todo%></span>
                     <% }else{ %>

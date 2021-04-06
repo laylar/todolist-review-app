@@ -66,7 +66,7 @@ app.put("/markComplete", (req, res) => {
         },
       }
     )
-    .then((res) => {
+    .then((result) => {
       console.log("Marked Complete");
       res.json("Marked Complete");
     });
@@ -82,7 +82,7 @@ app.put("/undo", (req, res) => {
         },
       }
     )
-    .then((res) => {
+    .then((result) => {
       console.log("Marked Complete");
       res.json("Marked Complete");
     });

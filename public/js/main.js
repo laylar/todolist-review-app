@@ -10,7 +10,7 @@ Array.from(todoItem).forEach((el) => {
   el.addEventListener("click", markComplete);
 });
 
-Array.from(todoItem).forEach((el) => {
+Array.from(todoItemComplete).forEach((el) => {
   el.addEventListener("click", undo);
 });
 
@@ -44,7 +44,7 @@ async function markComplete() {
     });
     const data = await response.json();
     console.log(data);
-    location.reload;
+    location.reload();
   } catch {}
 }
 
@@ -60,6 +60,6 @@ async function undo() {
     });
     const data = await response.json();
     console.log(data);
-    location.reload;
+    location.reload();
   } catch {}
 }

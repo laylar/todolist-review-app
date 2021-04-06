@@ -11,18 +11,20 @@
 <body>
     <h1>To Do:</h1>
     <% if(items.length > 0) {%>
+        <%console.log(items)%>
         <% for(let i=0; i < items.length; i++) {%>
+            <span><% items[i] %></span>
             <ul>
                 <li>
                     <%if(items[i].completed == true) {%>
-                    <span class='completed'><%=items[i].todo%></span>
+                        <span class='completed'><%=items[i].todo%></span>
                     <% }else{ %>
                         <span><%=items[i].todo%></span>
                     <% }%>
                     <span class='del'>Delete</span>
                 </li>
             </ul>
-            <h2>Things left to do: <%= left %></h2>
+            
             
         <%} %>
     <%} else {%>
@@ -30,6 +32,8 @@
             <li>There are no todos here.<li>
         </ul>
     <%}%>
+    <h2>Things left to do: <%= left %>
+    </h2>
     
     <form action="/createTodo" method="POST">
         <input type="text" placeholder="Enter Todo Item" name="todoItem">

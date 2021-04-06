@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-  const todoItems = await db.collection("todos").find().toArray;
+  const todoItems = await db.collection("todos").find().toArray();
   const itemsLeft = await db
     .collection("todos")
     .countDocuments({ completed: false });
@@ -47,7 +47,6 @@ app.post("/createTodo", (req, res) => {
 });
 
 app.delete("/deleteTodo", (req, res) => {
-  console.log(req.body.todoTextStuff);
   db.collection("todos")
     .deleteOne({ todo: req.body.todoTextStuff })
     .then((res) => {
@@ -56,37 +55,37 @@ app.delete("/deleteTodo", (req, res) => {
     });
 });
 
-app.put("/markComplete", (req, res) => {
-  db.collection("todos")
-    .updateOne(
-      { todo: req.body.todoTextStuff },
-      {
-        $set: {
-          completed: true,
-        },
-      }
-    )
-    .then((res) => {
-      console.log("Marked Complete");
-      res.json("Marked Complete");
-    });
-});
+// app.put("/markComplete", (req, res) => {
+//   db.collection("todos")
+//     .updateOne(
+//       { todo: req.body.todoTextStuff },
+//       {
+//         $set: {
+//           completed: true,
+//         },
+//       }
+//     )
+//     .then((res) => {
+//       console.log("Marked Complete");
+//       res.json("Marked Complete");
+//     });
+// });
 
-app.put("/undo", (req, res) => {
-  db.collection("todos")
-    .updateOne(
-      { todo: req.body.todoTextStuff },
-      {
-        $set: {
-          completed: false,
-        },
-      }
-    )
-    .then((res) => {
-      console.log("Marked Complete");
-      res.json("Marked Complete");
-    });
-});
+// app.put("/undo", (req, res) => {
+//   db.collection("todos")
+//     .updateOne(
+//       { todo: req.body.todoTextStuff },
+//       {
+//         $set: {
+//           completed: false,
+//         },
+//       }
+//     )
+//     .then((res) => {
+//       console.log("Marked Complete");
+//       res.json("Marked Complete");
+//     });
+// });
 
 //This starts up the server
 app.listen(process.env.PORT || PORT, () => {

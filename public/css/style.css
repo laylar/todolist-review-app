@@ -1,5 +1,8 @@
 h1 {
-  color: red;
+  color: green;
+}
+.instructions {
+  border: solid;
 }
 
 .completed {

@@ -9,7 +9,14 @@
 
 </head>
 <body>
-    <h1>To Do:</h1>
+    
+    <div class="instructions">
+        <h1>Instructions:</h1>
+        <p>Add to-dos below. When they are complete, click on them to cross them off.</p>
+        <p>You can also delete todos by clicking Delete!</p>
+    </div>
+    
+    <h2>To Do:</h2>
     <% if(items.length > 0) {%>
         <%console.log(items)%>
         <% for(let i=0; i < items.length; i++) {%>

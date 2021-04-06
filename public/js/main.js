@@ -15,7 +15,6 @@ Array.from(todoItem).forEach((el) => {
 });
 
 async function deleteTodo() {
-  alert("Clicked!");
   const todoText = this.parentNode.childNodes[1].innerText;
   try {
     const response = await fetch("deleteTodo", {
@@ -27,8 +26,10 @@ async function deleteTodo() {
     });
     const data = await response.json();
     console.log(data);
-    location.reload;
-  } catch {}
+    location.reload();
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function markComplete() {

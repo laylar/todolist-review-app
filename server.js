@@ -49,43 +49,44 @@ app.post("/createTodo", (req, res) => {
 app.delete("/deleteTodo", (req, res) => {
   db.collection("todos")
     .deleteOne({ todo: req.body.todoTextStuff })
+    .then((result) => {
+      console.log("Deleted Todo");
+      res.json("Deleted It");
+    })
+    .catch((err) => console.log(err));
+});
+
+app.put("/markComplete", (req, res) => {
+  db.collection("todos")
+    .updateOne(
+      { todo: req.body.todoTextStuff },
+      {
+        $set: {
+          completed: true,
+        },
+      }
+    )
     .then((res) => {
-      console.log("Deleted todo.");
-      res.json("Deleted it.");
+      console.log("Marked Complete");
+      res.json("Marked Complete");
     });
 });
 
-// app.put("/markComplete", (req, res) => {
-//   db.collection("todos")
-//     .updateOne(
-//       { todo: req.body.todoTextStuff },
-//       {
-//         $set: {
-//           completed: true,
-//         },
-//       }
-//     )
-//     .then((res) => {
-//       console.log("Marked Complete");
-//       res.json("Marked Complete");
-//     });
-// });
-
-// app.put("/undo", (req, res) => {
-//   db.collection("todos")
-//     .updateOne(
-//       { todo: req.body.todoTextStuff },
-//       {
-//         $set: {
-//           completed: false,
-//         },
-//       }
-//     )
-//     .then((res) => {
-//       console.log("Marked Complete");
-//       res.json("Marked Complete");
-//     });
-// });
+app.put("/undo", (req, res) => {
+  db.collection("todos")
+    .updateOne(
+      { todo: req.body.todoTextStuff },
+      {
+        $set: {
+          completed: false,
+        },
+      }
+    )
+    .then((res) => {
+      console.log("Marked Complete");
+      res.json("Marked Complete");
+    });
+});
 
 //This starts up the server
 app.listen(process.env.PORT || PORT, () => {
